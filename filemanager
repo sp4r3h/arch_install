@@ -1,0 +1,7 @@
+pacman -Sy thunar gvfs thunar-volman
+
+configure volume mamangement in thunar preferences / advanced
+
+add dbus-launch before i3 in .xinitrc
+
+reboot

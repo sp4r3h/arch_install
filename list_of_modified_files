@@ -1,0 +1,5 @@
+/etc/pacman.conf
+/etc/issue
+~/.i3/config
+~/.xinitrc
+~/.bashrc

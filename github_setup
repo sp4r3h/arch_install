@@ -1,0 +1,22 @@
+# Sets the default name for git to use when you commit
+git config --global user.name "sp4r3h"
+
+# Sets the default email for git to use when you commit
+git config --global user.email "sp4r3h@gmail.com"
+
+# Set git to use the credential memory cache
+git config --global credential.helper cache
+
+# Set the cache to timeout after 1 hour (setting is in seconds)
+git config --global credential.helper 'cache --timeout=3600'
+
+
+
+
+
+#go to git directory
+git init
+git add .
+git commit -m 'Initial Commit'
+git remote add origin https://github.com/sp4r3h/dotfiles.git
+git push -u origin master

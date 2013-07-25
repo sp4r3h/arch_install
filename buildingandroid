@@ -1,0 +1,42 @@
+yaourt -Sy git gnupg flex bison gperf sdl wxgtk squashfs-tools curl ncurses zlib schedtool perl-switch zip unzip
+yaourt -Sy lib32-zlib lib32-ncurses lib32-readline gcc-libs-multilib gcc-multilib lib32-gcc-libs
+
+yaourt -Sy repo #changes the repo script to use python 2 so no messing needed with python packages :D
+
+#download oracle java6 from internetz
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F" "http://download.oracle.com/otn-pub/java/jdk/6u45-b06/jdk-6u45-linux-x64.bin"
+
+sudo mv jdk-6u45-linux-x64.bin /opt
+cd /opt
+chmod +x jdk-xxxx
+sudo ./jdkxxxxxx.bin
+
+sudo mkdir /opt/android-build
+cd android-build
+sudo ln -s $(which python2) python
+
+
+#Test Everything is OK
+export PATH="/opt/android-build:/opt/jdk1.6.0_45/bin:$PATH"
+echo -n $(python -V)
+echo -n $(java -version)
+
+create script with export path in.
+
+#AOKP
+
+mkdir ~/android/aokp_jr1
+cd aokp_jr1
+repo init -u git://github.com/AOKP/platform_manifest.git -b jb-mr1
+repo sync -j32
+
+#Only one time needed. In-line kernel building.
+. ./platform_manifest/manual_add_kernel_manifest.sh
+
+#remove kernels from /home/YourUserName/aokp_jb/.repo/local_manifests/kernel_manifest.xml that you don't want to build.
+. build/envsetup.sh && brunch m7ul -j32
+( or grouper)
+
+emulator
+
+

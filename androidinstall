@@ -1,0 +1,16 @@
+#setup android
+
+yaourt -Sy android-sdk android-sdk-platform-tools
+chown -R spowney /opt/android-sdk
+/opt/android-sdk/tools/android (android if reboot in path), download build tools and platform
+
+yaourt -Sy android-studio
+gpasswd -a spowney adbusers
+yaourt -Sy jmtpfs
+
+jmtpfs ~/mtp    =mount
+fusermount -u ~/mtp     =umount
+
+write scripts in home to mount / umount.
+
+

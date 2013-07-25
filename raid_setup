@@ -1,0 +1,25 @@
+/dev/mapper/chipsetName_randomName
+
+# modprobe dm_mod
+# dmraid -ay
+# ls -la /dev/mapper/
+
+# modprobe sata_sil
+
+/lib/modules/`uname -r`/kernel/drivers/ata/
+
+# dmraid -tay
+
+Deactivate all device-mapper nodes:
+# dmsetup remove_all
+
+Reactivate the newly-created RAID nodes:
+# dmraid -ay
+# ls -la /dev/mapper
+
+Select Packages
+Ensure dmraid is marked for installation
+
+Add dm_mod to the MODULES line in mkinitcpio.conf. If using a mirrored (RAID 1) array, additionally add dm_mirror
+Add chipset_module_driver to the MODULES line if necessary
+Add dmraid to the HOOKS line in mkinitcpio.conf; preferably after sata but before filesystems

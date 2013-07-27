@@ -1,0 +1,6 @@
+sudo pacman -Sy virtualbox virtualbox-host-modules virtualbox-guest-iso
+gpasswd -a spowney vboxusers
+modprobe vboxdrv
+#/etc/modules-load.d/virtualbox.conf
+vboxdrv
+

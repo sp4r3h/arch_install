@@ -1,0 +1,24 @@
+####hide grub menu
+
+/etc/default/grub:
+ GRUB_FORCE_HIDDEN_MENU="true"
+
+copy 31_hold_shift to /etc/grub.d/
+
+grub-mkconfig -o /boot/grub/grub.cfg
+
+####auto login
+
+# mkdir /etc/systemd/system/getty@tty1.service.d
+
+Then create a new file named autologin.conf and add it into the directory:
+/etc/systemd/system/getty@tty1.service.d/autologin.conf
+[Service]
+ExecStart=
+ExecStart=-/usr/bin/agetty --autologin <username> --noclear %I 38400 linux
+
+
+
+###disable fsck
+
+0 on 2nd number in fstab

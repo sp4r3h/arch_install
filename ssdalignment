@@ -1,0 +1,25 @@
+add discard as option in fstab, and noatime.
+
+
+#create /etc/udev/rules.d/60-schedulers.rules
+
+# set deadline scheduler for non-rotating disks
+ACTION=="add|change", KERNEL=="sda", ATTR{queue/rotational}=="0", 
+ATTR{queue/scheduler}="deadline"
+
+# set deadline scheduler for non-rotating disks
+ACTION=="add|change", KERNEL=="sdb", ATTR{queue/rotational}=="0", 
+ATTR{queue/scheduler}="deadline"
+
+
+# set cfq scheduler for rotating disks
+ACTION=="add|change", KERNEL=="sdc", ATTR{queue/rotational}=="1", 
+ATTR{queue/scheduler}="cfq"
+
+# set cfq scheduler for rotating disks
+ACTION=="add|change", KERNEL=="sdd", ATTR{queue/rotational}=="1", 
+ATTR{queue/scheduler}="cfq"
+
+
+cat /sys/block/sdX/queue/scheduler #to check
+

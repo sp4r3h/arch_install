@@ -1,0 +1,33 @@
+/dev/sda:
+ Timing buffered disk reads: 726 MB in  3.00 seconds = 241.66 MB/sec
+ [spowney@archbox ~]$ sudo hdparm -t /dev/sdb
+ 
+ /dev/sdb:
+  Timing buffered disk reads: 612 MB in  3.00 seconds = 203.93 MB/sec
+  [spowney@archbox ~]$ hdparm --direct -Tt /dev/sda
+  /dev/sda: Permission denied
+  [spowney@archbox ~]$ sudo hdparm --direct -Tt /dev/sda
+  
+  /dev/sda:
+   Timing O_DIRECT cached reads:   900 MB in  2.00 seconds = 449.23 MB/sec
+    Timing O_DIRECT disk reads: 838 MB in  3.00 seconds = 279.19 MB/sec
+    [spowney@archbox ~]$ sudo hdparm --direct -Tt /dev/sdb
+    
+    /dev/sdb:
+     Timing O_DIRECT cached reads:   956 MB in  2.00 seconds = 477.39 MB/sec
+      Timing O_DIRECT disk reads: 674 MB in  3.00 seconds = 224.49 MB/sec
+      [spowney@archbox ~]$ sudo htparm -Tt /dev/sda
+      sudo: htparm: command not found
+      [spowney@archbox ~]$ sudo hdparm -Tt /dev/sda
+      
+      /dev/sda:
+       Timing cached reads:   27612 MB in  2.00 seconds = 13826.21 MB/sec
+        Timing buffered disk reads: 726 MB in  3.00 seconds = 241.71 MB/sec
+        [spowney@archbox ~]$ sudo hdparm -Tt /dev/sdb
+        
+        /dev/sdb:
+         Timing cached reads:   27290 MB in  2.00 seconds = 13663.35 MB/sec
+          Timing buffered disk reads: 612 MB in  3.01 seconds = 203.55 
+          MB/sec
+          [spowney@archbox ~]$ 
+
